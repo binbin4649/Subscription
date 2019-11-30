@@ -4,12 +4,15 @@
 class SubMonthTest extends BaserTestCase {
 	
     public $fixtures = array(
-        //'plugin.members.Default/Mypage',
-        //'plugin.members.Default/Mylog',
+        'plugin.subscription.Default/Mypage',
         'plugin.subscription.Default/SubMonth',
+        'plugin.subscription.Default/SubBook',
+        'plugin.subscription.Default/PayjpCustomer',
+        'plugin.subscription.Default/PayjpCharge',
     );
 
     public function setUp() {
+	    Configure::write('MccPlugin.TEST_MODE', true);
         $this->SubMonth = ClassRegistry::init('Subscription.SubMonth');
         parent::setUp();
     }
@@ -18,6 +21,15 @@ class SubMonthTest extends BaserTestCase {
 	    unset($this->SubMonth);
 	    parent::tearDown();
     }
+    
+    public function testNewRegist(){
+	    $payjp_token = 'test_token';
+	    $price = 500;
+	    $mypage_id = 1;
+	    $r = $this->SubMonth->newRegist($payjp_token, $price, $mypage_id);
+	    $this->assertEquals('before', $r['SubBook']['status']);
+    }
+    
 
 /*
     public function testValidateFalse(){

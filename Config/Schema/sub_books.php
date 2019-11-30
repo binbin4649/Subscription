@@ -19,6 +19,7 @@ class SubBooksSchema extends CakeSchema {
 		'price' => array('type' => 'integer', 'null' => true, 'default' => '0', 'length' => 8, 'unsigned' => false),
 		'exp_date' => array('type' => 'date', 'null' => true, 'default' => null),
 		'in_date' => array('type' => 'date', 'null' => true, 'default' => null),
+		'trial_time' => array('type' => 'integer', 'null' => true, 'default' => '0', 'length' => 2, 'unsigned' => false),
 		'created' => array('type' => 'datetime', 'null' => false, 'default' => null),
 		'modified' => array('type' => 'datetime', 'null' => false, 'default' => null),
 		'indexes' => array(

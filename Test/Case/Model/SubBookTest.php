@@ -4,9 +4,11 @@
 class SubBookTest extends BaserTestCase {
 	
     public $fixtures = array(
-	    //'plugin.members.Default/Mypage',
-        //'plugin.members.Default/Mylog',
+	    'plugin.subscription.Default/Mypage',
+        'plugin.subscription.Default/SubMonth',
         'plugin.subscription.Default/SubBook',
+        'plugin.subscription.Default/PayjpCustomer',
+        'plugin.subscription.Default/PayjpCharge',
     );
 
     public function setUp() {
@@ -18,6 +20,12 @@ class SubBookTest extends BaserTestCase {
 	    unset($this->SubBook);
 	    parent::tearDown();
     }
+    
+    public function testGetNextMonth(){
+	    $r = $this->SubBook->getNextMonth('2019-01-09');
+	    $this->assertEquals(10, strlen($r));
+    }
+    
 
     
 /*
